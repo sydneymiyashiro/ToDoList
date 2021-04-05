@@ -1,5 +1,6 @@
 //jshint esversion:6
 
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const lodash = require("lodash");
@@ -13,7 +14,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 // Connect to DB
-mongoose.connect("mongodb+srv://admin-sydney:Test123@cluster0.so7jt.mongodb.net/todolistDB", {
+mongoose.connect(process.env.MONGO_DB_URL, {
   useNewUrlParser: true, 
   useUnifiedTopology: true,
   useFindAndModify: false
